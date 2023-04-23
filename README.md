@@ -3,7 +3,7 @@
 
 -   Какие сетевые службы в ней разрешены?  
 Сканирование nmap выявило ряд запущенных сервисов, полный список на скрине  
-
+![nmap](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/nmap.png)  
 Вывод nmap показывает, что запущены самые популярные сервисы и они работают на очевидных портах, например, FTP на 21 и SSH на 22. Это уже облегчает задачу для злоумышленyика. 
 Далее я попробовал nmap с ключjм `-A` для более подробного вывода.   
 
@@ -37,7 +37,7 @@
 Ну и тут их больше всего, под версию OpenSSH 4.7 я нашел [это](https://www.exploit-db.com/exploits/45210) и [это](https://www.exploit-db.com/exploits/45233)  
 
 4. Ну и открытый telnet сам по себе дыра. Можно перехватить трафик Wireshark и например увидеть логин/пароль.   
-
+![telnet](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/telnet.png)  
 
 ### Задание 2  
 
@@ -58,6 +58,7 @@ PORT     STATE SERVICE
 23/tcp   open  telnet
 25/tcp   open  smtp
 ```
+![SYN](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/SYN.png)  
 
 ##### FIN/Xmass
 `Nmap done: 1 IP address (1 host up) scanned in 1.52 seconds` - FIN  
@@ -79,9 +80,15 @@ PORT     STATE         SERVICE
 23/tcp   open|filtered telnet
 25/tcp   open|filtered smtp
 ```
+FIN  
+![FIN](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/FIN.png)  
+Xmass  
+![Xmas](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/Xmas.png)  
 
 ##### UDP
 UDP-сканирование считается самым медленным, также они сильнее забивает канал.   
 UDP-сканирование отправляет пустой UDP-заголовок на целевой порт. Если в ответ поступает ICMP ответ с ошибкой недостижимости порта, то значит порт закрыт. Другие ошибки могут указывать на то, что порт фильтруется. Если служба отвечает UDP-пакетом, то порт открыт.   
+![UDP](https://github.com/RSafin12/13.1-Vulnerabilities-and-attacks/blob/main/UDP.png)
+
 
 
